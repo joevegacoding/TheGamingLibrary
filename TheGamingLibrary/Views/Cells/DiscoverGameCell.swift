@@ -57,6 +57,7 @@ struct DiscoverGameCell: View {
                     .lineLimit(nil)
                     .fontWeight(.semibold)
                     .fixedSize()
+                    .padding(.leading, 15)
             }
         }
        

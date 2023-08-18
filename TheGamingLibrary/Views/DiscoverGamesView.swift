@@ -10,44 +10,32 @@ import SwiftUI
 struct DiscoverGamesView: View {
     
     @StateObject var viewModel = GameViewModel()
-
+    
     var body: some View {
         
-//        NavigationView {
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack() {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack() {
+                
+                ForEach(viewModel.games) { game in
                     
-                    
-                    ForEach(viewModel.games) { game in
+                    NavigationLink {
                         
-                        NavigationLink {
-                            
-                            
-                            GameDetailsView(rating: .constant(4), isShowingDetail: $viewModel.isShowingDetail, game: game, gameDetails: MockDataDetails.game1, gameScreenShot: MockDataScreenshots.game1)
-                            
-                            
-                        } label: {
-                            
-                            DiscoverGameCell(isMain: true, games: game)
-                            //                        TestView(games: game)
-                            
-                        }
-                        .ignoresSafeArea()
-                        .navigationTitle("Discover")
+                        GameDetailsView(rating: .constant(4), isShowingDetail: $viewModel.isShowingDetail, game: game, gameDetails: MockDataDetails.game1, gameScreenShot: MockDataScreenshots.game1)
                         
-                        
-                        Spacer()
+                    } label: {
+                        DiscoverGameCell(isMain: true, games: game)
                     }
-                    
+                    .ignoresSafeArea()
+                    .navigationTitle("Discover")
+                    Spacer()
                 }
-                .padding()
             }
-//        }
-            
+            .padding()
+        }
+        
         .task {
             viewModel.getHighestRatedGamesOfThisYear()
         }
-        
     }
 }
 

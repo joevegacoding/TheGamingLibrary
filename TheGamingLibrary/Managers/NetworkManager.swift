@@ -13,10 +13,13 @@ final class NetworkManager: ObservableObject {
     let apiKey = ""
 
     private init() {}
+    let date: Date = Date()
+    var dateComp = DateComponents()
+        
     
     func getGames() async throws -> [Games]  {
-        let date: Date = Date()
-        var dateComp = DateComponents()
+       
+       
         dateComp.year = 1
 
         let upcomingDate =  Calendar.current.date(byAdding: dateComp, to: date)
@@ -43,7 +46,40 @@ final class NetworkManager: ObservableObject {
     
     func getUpcomingGames() async throws -> [Games]  {
        
-        guard let url = URL(string: "https://api.rawg.io/api/games?token&key=\(apiKey)&dates=2023-07-07,2023-12-12&ordering=-added") else {
+        dateComp.year = 1
+
+        let upcomingDate =  Calendar.current.date(byAdding: dateComp, to: date)
+        let formattedDate = date.formatted(.iso8601.year().month().day())
+
+        let formattedFutureDate = upcomingDate?.formatted(.iso8601.year().month().day())
+       
+        guard let url = URL(string: "https://api.rawg.io/api/games?token&key=\(apiKey)&dates=\(formattedDate),\(formattedFutureDate ?? "2025-01-01")&ordering=-added") else {
+            throw  GameError.invalidURL
+        }
+        
+        let (data, _ ) = try await URLSession.shared.data(from: url)
+        
+        do {
+            let decoder = JSONDecoder()
+            let decodedData = try decoder.decode(GameResults.self, from: data).results
+            
+            return decodedData
+            
+        } catch {
+            throw GameError.invalidData
+        }
+    }
+    
+    func getNewReleaseGames() async throws -> [Games]  {
+       
+        dateComp.month = -3
+
+        let pastDate =  Calendar.current.date(byAdding: dateComp, to: date)
+        let formattedDate = date.formatted(.iso8601.year().month().day())
+
+        let formattedPastDate = pastDate?.formatted(.iso8601.year().month().day())
+       
+        guard let url = URL(string: "https://api.rawg.io/api/games?token&key=\(apiKey)&dates=\(formattedPastDate ?? "2023-01-01"),\(formattedDate )&ordering=-added") else {
             throw  GameError.invalidURL
         }
         
@@ -61,8 +97,7 @@ final class NetworkManager: ObservableObject {
     }
     
     func getHighestRatedGamesOfThisYear() async throws -> [Games] {
-        //https://api.rawg.io/api/games?dates=2001-01-01,2001-12-31&ordering=-rating
-        let date: Date = Date()
+        
         let thisYear: String = date.formatted(.iso8601.year())
         
         

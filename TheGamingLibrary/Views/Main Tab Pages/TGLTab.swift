@@ -18,14 +18,6 @@ struct TGLTab: View {
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-            MyGames()
-                .tabItem {
-                    Label("My Games", systemImage: "gamecontroller")
-                }
-            Profile()
-                .tabItem {
-                    Label("Profile", systemImage: "person")
-                }
         }
     }
 }

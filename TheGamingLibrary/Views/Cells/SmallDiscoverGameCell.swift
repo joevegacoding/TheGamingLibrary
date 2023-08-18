@@ -38,8 +38,6 @@ struct SmallDiscoverGameCell: View {
             Text(games.name)
                 .font(.headline)
                 .fontWeight(.semibold)
-                
-//                .frame(width: , height: 40, alignment: .leading)
                 .foregroundColor(Color(.label))
                 .lineLimit(nil)
                 .padding(.leading, 20)
@@ -47,8 +45,6 @@ struct SmallDiscoverGameCell: View {
                 .lineLimit(nil)
                 .fontWeight(.semibold)
                 .fixedSize()
-    
-//        }
         }
     
       
