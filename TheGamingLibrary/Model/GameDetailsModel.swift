@@ -28,19 +28,13 @@ struct Platforms: Decodable, Hashable {
 }
 
 struct Developers: Decodable, Hashable {
-    
-//    struct Developer: Decodable, Hashable {
         let id: Int
         var name: String
-//    }
 }
 
 struct Genres: Decodable, Hashable {
-    
-//    struct Developer: Decodable, Hashable {
         let id: Int
         var name: String
-//    }
 }
 
 

@@ -7,9 +7,6 @@
 
 import Foundation
 
-//private let gameDetailInfo = viewModel.gameDetails?.platforms ?? []
-
-
 func getPlatforms(platforms: [Platforms]) -> Array<String> {
     var platformArray = [String]()
     for plat in platforms {

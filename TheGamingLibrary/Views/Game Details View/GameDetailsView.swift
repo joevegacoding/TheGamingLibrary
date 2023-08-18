@@ -24,10 +24,6 @@ struct GameDetailsView: View {
     let gameScreenShot: GameScreenshots
     var arrayOfStoreFronts: [String] = [String]()
     
-    var storeFrontDictionnary: [Int:String] = [1: "Steam", 2: "Xbox Store", 4: "App Store", 5: "GOG", 6: "Nintentdo Store", 8: "Google Play", 11: "Epic Games"]
-    
-    
-    
     
     func getGameStoreFronts() -> [Int:String]{
         var gameFrontDictionnary: [Int: String] = [:]
@@ -65,15 +61,7 @@ struct GameDetailsView: View {
         }
         return dictionnaryStoreFront
     }
-    
-//    var storeFronts: [String] {
-//        for storeFront in viewModel.gameStoreFronts {
-//            arrayOfStoreFronts.append(storeFront)
-//        }
-//
-//        return platformArray.joined(separator: ", ")
-//    }
-    
+
  
     func getStoreFronts() -> String {
         for storeFront in viewModel.gameStoreFronts {
@@ -198,12 +186,6 @@ struct GameDetailsView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        Button {
-                            print(viewModel.gameDetails)
-                            print(type(of: viewModel.gameDetails))
-                        } label: {
-                            Text("press")
-                        }
                         ForEach(viewModel.gameScreenShots.indices, id: \.self) { (index) in
                             
                             Button {
@@ -340,8 +322,7 @@ struct GameDetailsView: View {
                     .gesture(DragGesture().updating($draggingOffset, body: { value, outValue, _ in
                         outValue = value.translation
                         screenShotViewModel.onChange(value: draggingOffset)
-                    }).onEnded(screenShotViewModel.onEnd(value:)))
-
+                    }))
                 }
             }
         )
