@@ -2,7 +2,7 @@
 //  FullScreenImageView.swift
 //  TheGamingLibrary
 //
-//  Created by Beata Grzegorczyk on 2023-08-10.
+//  Created by Joseph Bouhanef on 2023-08-10.
 //
 
 import SwiftUI

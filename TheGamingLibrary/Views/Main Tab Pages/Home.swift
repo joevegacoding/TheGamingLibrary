@@ -24,16 +24,10 @@ struct Home: View {
                     NewReleaseGames()
                     
                 }
-              
             }
             
             .disabled(viewModel.isShowingDetail)
-            
         }
-        
-//        if viewModel.isShowingDetail {
-//            GameDetailsView(rating: .constant(4), isShowingDetail: $viewModel.isShowingDetail, game: viewModel.selectedGame!, gameDetails: MockDataDetails.game1, gameScreenShot: MockDataScreenshots.game1)
-//        }
     }
 }
 

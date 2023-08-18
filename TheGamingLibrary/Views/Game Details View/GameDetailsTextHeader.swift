@@ -2,7 +2,7 @@
 //  GameDetailsTextHeader.swift
 //  TheGamingLibrary
 //
-//  Created by Beata Grzegorczyk on 2023-08-12.
+//  Created by Joseph Bouhanef on 2023-08-12.
 //
 
 import SwiftUI
@@ -31,6 +31,7 @@ struct GameDetailsTextHeader: View {
                     .foregroundColor(isSelected ? .red : .white)
                     .frame(width: 20, height: 18)
             }
+            .hidden()
         }
     }
 }

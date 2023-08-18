@@ -27,6 +27,7 @@ struct Search: View {
                                 .frame(width: 180, height: 120)
                                 .cornerRadius(8)
                                 .padding(10)
+                                .redacted(reason: [])
                         } placeholder: {
                             Image("cod")
                                 .resizable()
@@ -34,35 +35,32 @@ struct Search: View {
                                 .frame(width: 180, height: 120)
                                 .cornerRadius(8)
                                 .padding(10)
+                                .redacted(reason: [])
                         }
                         
                         VStack(spacing: 12) {
                             Text(game.name)
-                                .font(.headline)
                                 .fontWeight(.medium)
-                            
                                 .frame(width: 120, alignment: .leading)
                                 .shadow(radius: 40)
                                 .font(.body)
-                            
+                                .redacted(reason: [])
                                 .foregroundColor(Color(.label))
                                 .lineLimit(nil)
-                            Text(String(game.rating))
-                                .font(.headline)
+                            
+                            Text("\(String(format: "%.2f", game.rating)) ⭐️")
                                 .fontWeight(.medium)
-                            
                                 .frame(width: 120, alignment: .leading)
-                            
                                 .font(.body)
-                            
                                 .foregroundColor(Color(.label))
                                 .lineLimit(nil)
+                                .redacted(reason: [])
                         }
-                        
                     }
-                }.listStyle(.plain)
+                }
             }
-            
+            .buttonStyle(.plain)
+            .listStyle(.plain)
             .searchable(text: $searchText)
             .onChange(of: searchText) { value in
                 

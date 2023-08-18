@@ -2,7 +2,7 @@
 //  NewReleaseGames.swift
 //  TheGamingLibrary
 //
-//  Created by Beata Grzegorczyk on 2023-08-17.
+//  Created by Joseph Bouhanef on 2023-08-17.
 //
 
 import SwiftUI
@@ -41,7 +41,7 @@ struct NewReleaseGames: View {
               
             }
         }
-        .padding(.top, 30)
+        .padding(.top, 50)
         .task {
             viewModel.getNewReleaseGames()
         }

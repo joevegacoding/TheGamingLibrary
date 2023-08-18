@@ -2,7 +2,7 @@
 //  DiscoverGamesView.swift
 //  TheGamingLibrary
 //
-//  Created by Beata Grzegorczyk on 2023-08-15.
+//  Created by Joseph Bouhanef on 2023-08-15.
 //
 
 import SwiftUI
@@ -26,7 +26,7 @@ struct DiscoverGamesView: View {
                         DiscoverGameCell(isMain: true, games: game)
                     }
                     .ignoresSafeArea()
-                    .navigationTitle("Discover")
+                    .navigationTitle("")
                     Spacer()
                 }
             }

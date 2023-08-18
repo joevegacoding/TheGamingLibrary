@@ -2,7 +2,7 @@
 //  GameScreenshotsModel.swift
 //  TheGamingLibrary
 //
-//  Created by Beata Grzegorczyk on 2023-08-06.
+//  Created by Joseph Bouhanef on 2023-08-06.
 //
 
 import Foundation

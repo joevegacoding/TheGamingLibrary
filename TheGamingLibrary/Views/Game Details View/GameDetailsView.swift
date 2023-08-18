@@ -12,11 +12,11 @@ struct GameDetailsView: View {
     @Binding var rating: Int
     @Binding var isShowingDetail: Bool
     @StateObject var viewModel = GameViewModel()
-   
+    
     // screenshot related properies
     @StateObject var screenShotViewModel = ScreenshotsViewModel()
     // needs to be @Published when moved
-   
+    
     @GestureState var draggingOffset: CGSize = .zero
     
     let game: Games
@@ -34,43 +34,6 @@ struct GameDetailsView: View {
         return gameFrontDictionnary
     }
     
-    func getStoreFrontInfo() -> [String:String]{
-        var dictionnaryStoreFront: [String: String] = [:]
-        
-        for gameStrFront in getGameStoreFronts() {
-            switch gameStrFront.key {
-            case 1:
-                 dictionnaryStoreFront["Steam"] = gameStrFront.value
-            case 2:
-                 dictionnaryStoreFront["Xbox Store"] = gameStrFront.value
-            case 3:
-                 dictionnaryStoreFront["Playstation Store"] = gameStrFront.value
-            case 4:
-                 dictionnaryStoreFront["App Store"] = gameStrFront.value
-            case 5:
-                 dictionnaryStoreFront["GOG"] = gameStrFront.value
-            case 6:
-                 dictionnaryStoreFront["Nintentdo Store"] = gameStrFront.value
-            case 8:
-                 dictionnaryStoreFront["Google Play"] = gameStrFront.value
-            case 11:
-                 dictionnaryStoreFront["Epic Games"] = gameStrFront.value
-            default:
-               dictionnaryStoreFront[""] = gameStrFront.value
-            }
-        }
-        return dictionnaryStoreFront
-    }
-
- 
-    func getStoreFronts() -> String {
-        for storeFront in viewModel.gameStoreFronts {
-            if storeFront.store_id == 1 {
-                return "Steam"
-            }
-        }
-        return "no on steam"
-    }
     
     var body: some View {
         
@@ -79,25 +42,14 @@ struct GameDetailsView: View {
         let platforms = viewModel.gameDetails?.platforms ?? []
         var platformArray = [String]()
         var genresArray = [String]()
-//        var arrayOfScreenshots = [String]()
         
         var gamePlatforms: String {
             for pltform in platforms {
                 platformArray.append(pltform.platform.name)
             }
-            
             return platformArray.joined(separator: ", ")
         }
         
-        
-        var gameImages: [String] {
-            var arrayOfBackgrounds: [String] = []
-            for gameImg in viewModel.games {
-                arrayOfBackgrounds.append(gameImg.background_image)
-            }
-            
-            return arrayOfBackgrounds
-        }
         
         var gameGenres: String {
             for genre in genres {
@@ -106,34 +58,31 @@ struct GameDetailsView: View {
             
             return genresArray.joined(separator: ", ")
         }
-
-        
         
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 15) {
                 // Header View
                 GeometryReader { proxy in
                     ZStack {
-                   
-                    return AnyView (
-                        //Banner
                         
-                        ZStack {
-                            AsyncImage(url: URL(string: game.background_image))  { image in
-                                image
-                                    .resizable()
-                                
-                            } placeholder: {
-                                Image("cod")
-                                    .resizable()
-                                
-                            }
+                        return AnyView (
+                            
+                            //Banner Image
+                            ZStack {
+                                AsyncImage(url: URL(string: game.background_image))  { image in
+                                    image
+                                        .resizable()
+                                    
+                                } placeholder: {
+                                    Image("cod")
+                                        .resizable()
+                                    
+                                }
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: getRect().width, height: 220, alignment: .center)
                                 .cornerRadius(0)
-    //                        proxy.frame
-                        }
-                    )
+                            }
+                        )
                     }
                     
                 }
@@ -141,8 +90,7 @@ struct GameDetailsView: View {
                 
                 
                 GameDetailsTextHeader(title: game.name)
-               
-
+                
                 CarouselGameInfo(gameRating: game.rating, gameRelease: game.released, gameDeveloper: viewModel.gameDetails?.developers[0].name ?? "")
                 
                 Divider()
@@ -163,12 +111,8 @@ struct GameDetailsView: View {
                     
                     Text(gamePlatforms)
                         .frame(maxWidth:  getRect().width, alignment: .leading)
-                    
-                    
                 }
                 .padding()
-                
-                
                 
                 VStack(spacing: 10) {
                     Text("Genres")
@@ -194,7 +138,7 @@ struct GameDetailsView: View {
                                 screenShotViewModel.selectedImageId = viewModel.gameScreenShots[index]
                                 
                             } label: {
-                            AsyncImage(url: URL(string: viewModel.gameScreenShots[index].image))  { image in
+                                AsyncImage(url: URL(string: viewModel.gameScreenShots[index].image))  { image in
                                     image
                                         .resizable()
                                     
@@ -211,50 +155,48 @@ struct GameDetailsView: View {
                     }
                 }
                 .padding()
-            
                 
-             
+                
+                
             }
             Divider()
                 .overlay(.gray)
             
             
             
-          
-                
+            
+            
                 .font(.title2)
                 .fontWeight(.semibold)
-                
-                Text("Where To Buy")
-                    .foregroundColor(.gray)
-                    .fontWeight(.regular)
-                    .frame(maxWidth:  getRect().width, alignment: .leading)
-                
-                
-             
+            
+            Text("Where To Buy")
+                .foregroundColor(.gray)
+                .fontWeight(.regular)
+                .frame(maxWidth:  getRect().width, alignment: .leading)
+            
+            
+            
             VStack(spacing: 25) {
                 ScrollView (.horizontal, showsIndicators: false) {
                     HStack {
-                       
-                
-
-                    ForEach(getStoreFrontInfo().sorted(by: { $0.key < $1.key} ), id: \.key) { key, value in
                         
                         
-                        Link( destination: URL(string: value)!) {
-                            Text(key)
-                             
+                        
+                        ForEach(getStoreFrontInfo(gameStoreFronts: getGameStoreFronts()).sorted(by: { $0.key < $1.key} ), id: \.key) { key, value in
+                            
+                            Link( destination: URL(string: value)!) {
+                                Text(key)
+                                
+                            }
+                            .frame(alignment: .leading)
+                            .bold()
+                            .frame(width: 120, height: 59)
+                            .foregroundColor(.white)
+                            .background(Color(UIColor.systemBlue))
+                            .cornerRadius(8)
+                            .font(.body)
                         }
-                        .frame(alignment: .leading)
-                        .bold()
-                        .frame(width: 120, height: 59)
-//                                .frame(maxWidth:  getRect().width, alignment: .leading)
-                        .foregroundColor(.white)
-                        .background(Color(UIColor.systemBlue))
-                        .cornerRadius(8)
-                        .font(.body)
-                    }
-
+                        
                     }
                 }
             }
@@ -262,7 +204,7 @@ struct GameDetailsView: View {
         }
         .ignoresSafeArea(.all, edges: .top)
         
-
+        
         .task {
             viewModel.getGameDetails(id: game.id)
         }
@@ -276,29 +218,23 @@ struct GameDetailsView: View {
             // Image Viewer
             ZStack {
                 if !screenShotViewModel.selectedImages.isEmpty {
-//                    FullScreenImageView()
-                    
                     ZStack {
                         Color.black
                             .ignoresSafeArea()
                         
                         TabView(selection: $screenShotViewModel.selectedImageId) {
                             ForEach(screenShotViewModel.selectedImages, id: \.self) { image in
-//                                Text(image.image)
                                 AsyncImage(url: URL(string: image.image))  { image in
-                                        image
+                                    image
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                      
-                                        
-                                        
-                                    } placeholder: {
-                                        Image("")
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fit)
-                                    }
-                                    .tag(image)
-                                    .offset(y: screenShotViewModel.imageViewerOffset.height)
+                                } placeholder: {
+                                    Image("")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
+                                .tag(image)
+                                .offset(y: screenShotViewModel.imageViewerOffset.height)
                             }
                         }
                         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
@@ -344,6 +280,34 @@ extension View {
     func attributedString(from string: String) -> String {
         
         return string.replacingOccurrences(of: "<[^>]+>", with: "\n", options: .regularExpression, range: nil)
+    }
+    
+    func getStoreFrontInfo(gameStoreFronts: [Int:String]) -> [String:String]{
+        var dictionnaryStoreFront: [String: String] = [:]
+        
+        for gameStrFront in gameStoreFronts {
+            switch gameStrFront.key {
+            case 1:
+                dictionnaryStoreFront["Steam"] = gameStrFront.value
+            case 2:
+                dictionnaryStoreFront["Xbox Store"] = gameStrFront.value
+            case 3:
+                dictionnaryStoreFront["Playstation Store"] = gameStrFront.value
+            case 4:
+                dictionnaryStoreFront["App Store"] = gameStrFront.value
+            case 5:
+                dictionnaryStoreFront["GOG"] = gameStrFront.value
+            case 6:
+                dictionnaryStoreFront["Nintentdo Store"] = gameStrFront.value
+            case 8:
+                dictionnaryStoreFront["Google Play"] = gameStrFront.value
+            case 11:
+                dictionnaryStoreFront["Epic Games"] = gameStrFront.value
+            default:
+                dictionnaryStoreFront[""] = gameStrFront.value
+            }
+        }
+        return dictionnaryStoreFront
     }
 }
 

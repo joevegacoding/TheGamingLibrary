@@ -43,8 +43,8 @@
 		B800B4AE2A8D8AC40086A824 /* UpcomingGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingGames.swift; sourceTree = "<group>"; };
 		B800B4B12A8F010D0086A824 /* NewReleaseGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleaseGames.swift; sourceTree = "<group>"; };
 		B800B4B92A8F0C4C0086A824 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../.Trash/Info.plist; sourceTree = "<group>"; };
-		B800B4BD2A8F0CB80086A824 /* Info.plist 22-17-05-735.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info.plist 22-17-05-735.plist"; path = "../../.Trash/Info.plist 22-17-05-735.plist"; sourceTree = "<group>"; };
 		B800B4C02A8F114D0086A824 /* ScreenshotsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScreenshotsViewModel.swift; path = ../../../../../../.Trash/ScreenshotsViewModel.swift; sourceTree = "<group>"; };
+		B800B4C32A8F176B0086A824 /* Preview Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview Content.swift"; sourceTree = "<group>"; };
 		B819CF702A8484C6008452B6 /* CarouselScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselScreenshots.swift; sourceTree = "<group>"; };
 		B819CF722A8580CE008452B6 /* FullScreenImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageView.swift; sourceTree = "<group>"; };
 		B819CF742A87EDD9008452B6 /* GameDetailsTextHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailsTextHeader.swift; sourceTree = "<group>"; };
@@ -177,10 +177,10 @@
 		E915255A2A6604D500E239F3 = {
 			isa = PBXGroup;
 			children = (
+				B800B4C32A8F176B0086A824 /* Preview Content.swift */,
 				E91525652A6604D500E239F3 /* TheGamingLibrary */,
 				E91525842A66FE3F00E239F3 /* Assets.xcassets */,
 				B800B4B92A8F0C4C0086A824 /* Info.plist */,
-				B800B4BD2A8F0CB80086A824 /* Info.plist 22-17-05-735.plist */,
 				E91525642A6604D500E239F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -489,7 +489,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TheGamingLibrary/Preview Content\"";
 				DEVELOPMENT_TEAM = T3UM763386;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -523,7 +522,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TheGamingLibrary/Preview Content\"";
 				DEVELOPMENT_TEAM = T3UM763386;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

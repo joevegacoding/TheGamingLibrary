@@ -2,7 +2,7 @@
 //  GameTitle.swift
 //  TheGamingLibrary
 //
-//  Created by Beata Grzegorczyk on 2023-07-30.
+//  Created by Joseph Bouhanef on 2023-07-30.
 //
 
 import SwiftUI
