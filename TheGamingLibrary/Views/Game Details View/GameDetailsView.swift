@@ -255,10 +255,6 @@ struct GameDetailsView: View {
                         )
                         .navigationBarHidden(true)
                     }
-                    .gesture(DragGesture().updating($draggingOffset, body: { value, outValue, _ in
-                        outValue = value.translation
-                        screenShotViewModel.onChange(value: draggingOffset)
-                    }))
                 }
             }
         )

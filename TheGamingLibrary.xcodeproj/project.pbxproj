@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		745F8AAB2AA124C20021B06E /* ScreenshotsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745F8AAA2AA124C20021B06E /* ScreenshotsViewModel.swift */; };
 		B800B4AA2A8BEA410086A824 /* DiscoverGamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B800B4A92A8BEA410086A824 /* DiscoverGamesView.swift */; };
 		B800B4AF2A8D8AC40086A824 /* UpcomingGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = B800B4AE2A8D8AC40086A824 /* UpcomingGames.swift */; };
 		B800B4B22A8F010D0086A824 /* NewReleaseGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = B800B4B12A8F010D0086A824 /* NewReleaseGames.swift */; };
-		B800B4C12A8F114E0086A824 /* ScreenshotsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B800B4C02A8F114D0086A824 /* ScreenshotsViewModel.swift */; };
 		B819CF712A8484C6008452B6 /* CarouselScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = B819CF702A8484C6008452B6 /* CarouselScreenshots.swift */; };
 		B819CF732A8580CE008452B6 /* FullScreenImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B819CF722A8580CE008452B6 /* FullScreenImageView.swift */; };
 		B819CF752A87EDD9008452B6 /* GameDetailsTextHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B819CF742A87EDD9008452B6 /* GameDetailsTextHeader.swift */; };
@@ -39,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		745F8AAA2AA124C20021B06E /* ScreenshotsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotsViewModel.swift; sourceTree = "<group>"; };
 		B800B4A92A8BEA410086A824 /* DiscoverGamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverGamesView.swift; sourceTree = "<group>"; };
 		B800B4AE2A8D8AC40086A824 /* UpcomingGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingGames.swift; sourceTree = "<group>"; };
 		B800B4B12A8F010D0086A824 /* NewReleaseGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleaseGames.swift; sourceTree = "<group>"; };
@@ -247,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				E9A12EC82A6825810031C5DB /* GameViewModel.swift */,
+				745F8AAA2AA124C20021B06E /* ScreenshotsViewModel.swift */,
 				E915258A2A67568F00E239F3 /* NetworkManager.swift */,
 			);
 			path = Managers;
@@ -350,13 +352,13 @@
 				E91525812A660E7000E239F3 /* DiscoverGameCell.swift in Sources */,
 				B819CF732A8580CE008452B6 /* FullScreenImageView.swift in Sources */,
 				B866D4C12A772F040002220B /* GameLoadingView.swift in Sources */,
-				B800B4C12A8F114E0086A824 /* ScreenshotsViewModel.swift in Sources */,
 				B800B4B22A8F010D0086A824 /* NewReleaseGames.swift in Sources */,
 				E9A12EC72A6824110031C5DB /* GameError.swift in Sources */,
 				B866D4C72A7B27770002220B /* RatingView.swift in Sources */,
 				E91525752A66050400E239F3 /* Home.swift in Sources */,
 				E91525672A6604D500E239F3 /* TheGamingLibraryApp.swift in Sources */,
 				B819CF712A8484C6008452B6 /* CarouselScreenshots.swift in Sources */,
+				745F8AAB2AA124C20021B06E /* ScreenshotsViewModel.swift in Sources */,
 				B866D4D22A8048CB0002220B /* GameScreenshotsModel.swift in Sources */,
 				B800B4AF2A8D8AC40086A824 /* UpcomingGames.swift in Sources */,
 				B819CF7B2A882D56008452B6 /* GameStoreFrontsModel.swift in Sources */,
