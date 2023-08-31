@@ -120,7 +120,7 @@ final class NetworkManager: ObservableObject {
     
     func getSearchGames(searchText: String) async throws -> [Games] {
         
-        guard let url = URL(string: "https://api.rawg.io/api/games?token&key=\(apiKey)&search=\(searchText.spaceTrimmed())") else {
+        guard let url = URL(string: "https://api.rawg.io/api/games?ordering=-added&token&key=\(apiKey)&search=\(searchText.spaceTrimmed())&search_exact=true") else {
             throw  GameError.invalidURL
         }
         
